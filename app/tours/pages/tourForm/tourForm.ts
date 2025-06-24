@@ -21,8 +21,8 @@ function initializeForm(): void {
             .then (tour => {
                 (document.querySelector('#name') as HTMLInputElement).value = tour.name;
                 (document.querySelector('#description') as HTMLInputElement).value = tour.description;
-                (document.querySelector('#date') as HTMLInputElement).value = tour.date;
-                (document.querySelector('#maxParticipants') as HTMLInputElement).value = tour.maxParticipants.toString();
+                (document.querySelector('#date') as HTMLInputElement).value = tour.dateTime;
+                (document.querySelector('#maxParticipants') as HTMLInputElement).value = tour.maxGuests.toString();
             }).catch (error => {
                 console.error(error.status, error.text);
             })
@@ -36,7 +36,7 @@ function submit(): void {
     const maxParticipants = (document.querySelector('#maxParticipants') as HTMLInputElement).value.trim()
     const authorId = Number(localStorage.getItem('userId'));
 
-    const formData: Tour = {name: name, description: description, date: date, maxParticipants: Number(maxParticipants), authorId: Number(authorId)}
+    const formData: Tour = {name: name, description: description, dateTime: date, maxGuests: Number(maxParticipants), guideId: Number(authorId)}
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const id = urlParams.get('id')

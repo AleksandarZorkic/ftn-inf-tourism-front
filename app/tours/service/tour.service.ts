@@ -4,11 +4,11 @@ export class TourService {
     private apiUrl: string;
 
     constructor() {
-        this.apiUrl = '/data/tours.json';
+        this.apiUrl = 'http://localhost:5105/api/tours';
     }
 
     getToursByAuthor(id: string): Promise<Tour[]> {
-        return fetch(`${this.apiUrl}?authorId=${id}`)
+        return fetch(`${this.apiUrl}?guideId=${id}`)
             .then(async response => {
                 if (!response.ok) {
                     const msg = await response.text();
@@ -58,7 +58,7 @@ export class TourService {
         return fetch(`${this.apiUrl}/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({id, ...formData})
+            body: JSON.stringify(formData)
         })
         .then(async response => {
             if (!response.ok) {
@@ -81,7 +81,7 @@ export class TourService {
                 throw {status: response.status, message: msg}
             }
         }).catch(error => {
-            console.error('Error: ', error.message)
+            console.error('Error: ', error.status)
             throw error
         });
     }

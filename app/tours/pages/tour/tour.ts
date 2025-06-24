@@ -5,7 +5,7 @@ import { Tour } from "../../models/tour.model.js";
 const tourService = new TourService();
 
 function initialize(): void {
-    const addBtn = document.querySelector('#addBtn') as HTMLInputElement | null;
+    const addBtn = document.querySelector('#addBtn') as HTMLButtonElement | null;
     if (addBtn) {
         addBtn.addEventListener('click', () => {
             window.location.href = '../tourForm/tourForm.html';
@@ -29,10 +29,11 @@ function loadTours(): void {
 }
 
 function renderData(data: Tour[]): void {
-    const tbody = document.querySelector('table tbody') as HTMLTableElement | null;
-    const thead = document.querySelector('table thead') as HTMLTableElement | null;
+    const tbody = document.querySelector('table tbody') as HTMLTableSectionElement | null;
+    const thead = document.querySelector('table thead') as HTMLTableSectionElement | null;
     const noData = document.querySelector('#no-data-message') as HTMLElement | null;
     if (!tbody || !thead || !noData) return;
+    tbody.innerHTML = '';
 
     if (data.length === 0) {
     document.querySelector('table')?.classList.add('hidden');
@@ -48,12 +49,11 @@ function renderData(data: Tour[]): void {
     for (const tour of data) {
         const tr = document.createElement('tr');
         [
-            tour.id.toString(),
+            (tour.id!).toString(),
             tour.name,
             tour.description,
-            tour.date,
-            tour.maxParticipants.toString(),
-            tour.authorId.toString()
+            tour.dateTime,
+            tour.maxGuests.toString(),
         ].forEach(text => {
             const td = document.createElement('td');
             td.textContent = text;
@@ -63,7 +63,7 @@ function renderData(data: Tour[]): void {
         const editButton = document.createElement('button');
         editButton.textContent = 'Izmeni';
         editButton.addEventListener('click', () => {
-            window.location.href = `tourForm/tourForm.html?id=${tour.id}`;
+            window.location.href = '../tourForm/tourForm.html?id=' + tour.id;
         });
         tdEdit.appendChild(editButton);
         tr.appendChild(tdEdit);
@@ -75,8 +75,7 @@ function renderData(data: Tour[]): void {
 
         deleteButton.onclick = function () {
             tourService.deleteTour(tour.id.toString())
-                .then(() => {
-                    window.location.reload();
+                .then(() => {loadTours()
                 })
                 .catch(error => {
                     console.error(error.status, error.message);
@@ -84,6 +83,13 @@ function renderData(data: Tour[]): void {
         }
         tdDelete.appendChild(deleteButton)
         tr.appendChild(tdDelete)
+
+        const userId = localStorage.getItem('userId');
+        
+        if (!userId) {
+        alert('Niste ulogovani');
+        return;
+        }
     }
 }
 
