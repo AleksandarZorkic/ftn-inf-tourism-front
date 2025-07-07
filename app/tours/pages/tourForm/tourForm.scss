@@ -34,3 +34,16 @@
     border-radius: 10px;
     text-align: center;
 }
+
+
+[id^="step-"] {
+  display: none;
+}
+
+[id^="step-"]:not(.hidden) {
+  display: block;
+}
+
+.hidden {
+  display: none !important;
+}

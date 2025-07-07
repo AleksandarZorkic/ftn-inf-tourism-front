@@ -52,6 +52,7 @@ function renderData(data: Tour[]): void {
             (tour.id!).toString(),
             tour.name,
             tour.description,
+            tour.status || '-',
             tour.dateTime,
             tour.maxGuests.toString(),
         ].forEach(text => {

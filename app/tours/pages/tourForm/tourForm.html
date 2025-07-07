@@ -1,42 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dodaj turu</title>
-    <link rel="stylesheet" href="../../../../dist/tours/pages/tourForm/tourForm.css">
-    <script type="module" src="../../../../dist/tours/pages/tourForm/tourForm.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dodaj turu</title>
+  <link rel="stylesheet" href="../../../../dist/tours/pages/tourForm/tourForm.css">
+  <script type="module" src="../../../../dist/tours/pages/tourForm/tourForm.js" defer></script>
 </head>
 <body>
-    <div>
-        <form id="form">
-            <input id="tourId" name="id" type="hidden"/>
 
-            <label for="name">Naziv ture:</label>
-            <input id="name" name="name" type="text" required minlength="3" placeholder="Unesite naziv ture" />
-            <span id="nameError"></span>
-            <br/>
+  <div id="kp-step">
+    <h2>
+        Unesite ključnu tačku
+        <span id="kpIndex"></span> od <span id="kpMax"></span>
+    </h2>
 
-            <label for="description">Opis</label>
-            <input id="description" name="description" type="text" required placeholder="Unesite opis ture" />
-            <span id="descriptionError"></span>
-            <br/>
+    <ul id="keypointsList"></ul>
 
-            <label for="date">Datum i vreme početka:</label>
-            <input id="date" name="date" type="datetime-local" required/>
-            <span id="dateError"></span>
-            <br/>
+    <label for="kpName">Naziv ključne tačke:</label>
+    <input id="kpName" placeholder="Naziv tačke" required />
+    <span id="kpNameError"></span><br/>
 
-            <label for="maxParticipants">Maksimalno ucesnika:</label>
-            <input id="maxParticipants" name="maxParticipants" type="number" required min="1"/>
-            <span id="maxParticipantsError"></span>
-            <br/>
-            
-        </form>
-        <div class="actions">
-            <button id="submitBtn" type="button">Sačuvaj</button>
-            <button id="cancelBtn">Otkaži</button>
-        </div>
+    <label for="kpDesc">Opis:</label>
+    <textarea id="kpDesc" placeholder="Opis tačke" required></textarea>
+    <span id="kpDescError"></span><br/>
+
+    <label for="kpImageUrl">URL slike:</label>
+    <input id="kpImageUrl" placeholder="https://..." required />
+    <span id="kpImageUrlError"></span><br/>
+
+    <label for="kpLat">Geografska širina:</label>
+    <input id="kpLat" type="number" step="any" placeholder="44.8176" required />
+    <span id="kpLatError"></span><br/>
+
+    <label for="kpLng">Geografska dužina:</label>
+    <input id="kpLng" type="number" step="any" placeholder="20.4633" required />
+    <span id="kpLngError"></span><br/>
+
+    <div class="actions">
+      <button id="kpCancel" type="button">Odustani</button>
+      <button id="kpNext" type="button">Dalje</button>
+      <button id="kpFinish" type="button" class="hidden">Popuni turu</button>
     </div>
+
+    <span id="kpFeedback"></span>
+  </div>
+
+  <form id="form">
+    <div id="step-3" class="hidden">
+      <h2>Osnovni podaci o turi</h2>
+
+      <input id="tourId" name="id" type="hidden" />
+
+      <label for="name">Naziv ture:</label>
+      <input id="name" name="name" type="text" required minlength="3" />
+      <span id="nameError"></span><br/>
+
+      <label for="description">Opis ture:</label>
+      <textarea id="description" name="description" required minlength="250"></textarea>
+      <span id="descriptionError"></span><br/>
+
+      <label for="date">Datum i vreme:</label>
+      <input id="date" name="date" type="datetime-local" required />
+      <span id="dateError"></span><br/>
+
+      <label for="maxParticipants">Maks. učesnika:</label>
+      <input id="maxParticipants" name="maxParticipants" type="number" required min="1" />
+      <span id="maxParticipantsError"></span><br/>
+
+      <div class="actions">
+        <button id="back3" type="button">Nazad</button>
+        <button id="submitBtn" type="button">Sačuvaj turu</button>
+        <button id="publishBtn" type="button" disabled>Objavi turu</button>
+      </div>
+    </div>
+  </form>
 </body>
 </html>
