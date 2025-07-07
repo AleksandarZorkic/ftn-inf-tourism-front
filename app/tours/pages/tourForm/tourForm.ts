@@ -59,11 +59,11 @@ function updatePublishButton() {
 
 function updateKpUI() {
   const total = existingKps.length + newKps.length;
-  // upiši u header ID-e
+
   document.getElementById('kpIndex')!.textContent = String(currentIndex + 1);
   document.getElementById('kpMax')!.textContent   = String(total);
 
-  // lista
+
   const all = [...existingKps, ...newKps];
   const ul = document.getElementById("keypointsList")!;
   ul.innerHTML = all.map((kp, i) => `
@@ -73,7 +73,6 @@ function updateKpUI() {
     </li>
   `).join("");
 
-  // dugme “Popuni turu”
   document.getElementById("kpFinish")!
     .classList.toggle("hidden", total < MIN_KP);
 }
@@ -166,12 +165,18 @@ async function saveTour() {
     if (!tourId) {
         const created = await tourService.createTour(t);
         tourId = String(created.id);
+
+        for (const kp of newKps) {
+            kp.tourId = Number(tourId);
+            await keyPointService.createKeyPoint(tourId, kp);
+        }
     } else {
         await tourService.updateTour(tourId, t);
     }
 
     window.location.href = "../tour/tour.html";
 }
+
 
 async function publishTour() {
     if (!tourId) await saveTour();
