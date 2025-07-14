@@ -1,33 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Ture</title>
-    <link rel="stylesheet" href="../../../../dist/tours/pages/tour/tour.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../../../../dist/tours/pages/tour/tour.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="logo">Logo</div>
+      <div class="slogan">Neki slogan</div>
+      <div class="user-profile"></div>
+    </header>
+
+    <nav class="navbar">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../../../index.html">Home</a></li>
+        <li class="nav-item" id="logout">
+          <a href="../../../users/pages/login/login.html">Logout</a>
+        </li>
+      </ul>
+    </nav>
+
     <h1>Moje ture</h1>
+    <button id="addBtn">Dodaj novu turu</button>
     <p id="no-data-message" class="hidden">Trenutno nema tura.</p>
     <div id="table-details">
-        <table>
-            <thead class="hidden">
-                <tr>
-                    <th>Id</th>
-                    <th>Naziv ture</th>
-                    <th>Opis</th>
-                    <th>Status</th>
-                    <th>Datum i vreme početka</th>
-                    <th>Maksimalno učesnika</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                
-            </tbody>
-        </table>
+      <table>
+        <thead class="hidden">
+          <tr>
+            <th>Id</th>
+            <th>Naziv ture</th>
+            <th>Opis</th>
+            <th>Status</th>
+            <th>Datum i vreme početka</th>
+            <th>Maksimalno učesnika</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
-    <button id="addBtn">Dodaj novu turu</button>
-    <script type="module" src="../../../../dist/tours/pages/tour/tour.js" defer></script>
-</body>
+    <script
+      type="module"
+      src="../../../../dist/tours/pages/tour/tour.js"
+      defer
+    ></script>
+  </body>
 </html>

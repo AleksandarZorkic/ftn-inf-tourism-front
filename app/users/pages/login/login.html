@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Books</title>
-    <link rel="stylesheet" href="../../../../dist/users/pages/login/login.css">
-    <script type="module" src="../../../../dist/users/pages/login/login.js"></script>
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="../../../../dist/users/pages/login/login.css"
+    />
+    <script
+      type="module"
+      src="../../../../dist/users/pages/login/login.js"
+    ></script>
+  </head>
+  <body>
     <nav class="navbar">
-        <ul class="nav-list">
-            <li class="nav-item"><a href="../../../index.html">Home</a></li>
-            <li class="nav-item" id="login"><a href="login.html">Login</a></li>
-            <li class="nav-item" id="logout"><a href="../../../index.html">Logout</a></li>
-        </ul>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../../../index.html">Home</a></li>
+        <li class="nav-item" id="login"><a href="login.html">Login</a></li>
+        <li class="nav-item" id="logout">
+          <a href="../../../index.html">Logout</a>
+        </li>
+      </ul>
     </nav>
     <div id="loginForm">
-        <form>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        </form>
-        <button type="submit" id="submit">Submit</button>
+      <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+      </form>
+      <button type="submit" id="submit">Submit</button>
     </div>
-</body>
+  </body>
 </html>

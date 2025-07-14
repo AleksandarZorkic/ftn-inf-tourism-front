@@ -1,19 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Books</title>
-    <link rel="stylesheet" href="../dist/index.css">
-    <script type="module" src="../dist/index.js"></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sve ture</title>
+    <link rel="stylesheet" href="../dist/index.css" />
+    <script type="module" src="../dist/index.js" defer></script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="logo">Logo</div>
+      <div class="slogan">Neki slogan</div>
+      <div class="user-profile"></div>
+    </header>
+
     <nav class="navbar">
-        <ul class="nav-list">
-            <li class="nav-item"><a href="index.html">Home</a></li>
-            <li class="nav-item" id="login"><a href="users/pages/login/login.html">Login</a></li>
-            <li class="nav-item" id="logout"><a href="index.html">Logout</a></li>
-        </ul>
+      <ul class="nav-list">
+        <li class="nav-item" id="logout">
+          <a href="../../../users/pages/login/login.html">Logout</a>
+        </li>
+      </ul>
     </nav>
-</body>
+
+    <h1>Pregled svih tura</h1>
+    <li class="nav-item">
+      <a href="../app/tours/pages/my-reservations/my-reservations.html"
+        >Moje rezervacije</a
+      >
+    </li>
+
+    <div class="controls">
+      <label for="pageSize">Prikaži po:</label>
+      <select id="pageSize">
+        <option value="5">5</option>
+        <option value="10" selected>10</option>
+        <option value="20">20</option>
+      </select>
+    </div>
+
+    <table id="toursTable">
+      <thead>
+        <tr>
+          <th class="sortable" data-column="Name">Naziv ▲▼</th>
+          <th class="sortable" data-column="DateTime">Datum i vreme ▲▼</th>
+          <th class="sortable" data-column="MaxGuests">Max učesnika ▲▼</th>
+          <th>Opis</th>
+          <th>Slobodna mesta</th>
+          <th>Detalji</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div class="pagination">
+      <button id="prevPage">Prethodna</button>
+      <span id="pageInfo"></span>
+      <button id="nextPage">Naredna</button>
+    </div>
+  </body>
 </html>

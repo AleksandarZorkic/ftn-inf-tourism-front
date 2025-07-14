@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Detalji ture</title>
+    <link
+      rel="stylesheet"
+      href="../../../../dist/tours/pages/details/details.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../../../index.html">Home</a></li>
+        <li class="nav-item" id="logout">
+          <a href="../../../../dist/users/pages/login/login.html">Logout</a>
+        </li>
+      </ul>
+    </nav>
+
+    <main id="details-page">
+      <h1 id="tourName"></h1>
+      <p id="tourDesc"></p>
+      <p><strong>Datum i vreme:</strong> <span id="tourDate"></span></p>
+      <p><strong>Maks. učesnika:</strong> <span id="tourMax"></span></p>
+
+      <section id="keypoints">
+        <h2>Ključne tačke</h2>
+        <ul id="keypointList"></ul>
+      </section>
+
+      <section id="reserve-section">
+        <p>Slobodna mesta: <span id="tourAvailable"></span></p>
+        <label for="numPeople">Broj osoba:</label>
+        <input id="numPeople" type="number" min="1" value="1" />
+        <button id="reserveBtn">Rezerviši</button>
+        <span id="reserveError" class="error"></span>
+      </section>
+    </main>
+
+    <script
+      type="module"
+      src="../../../../dist/tours/pages/details/details.js"
+      defer
+    ></script>
+    <div id="toast-container"></div>
+  </body>
+</html>

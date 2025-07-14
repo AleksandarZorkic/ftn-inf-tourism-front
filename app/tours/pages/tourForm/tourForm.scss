@@ -1,49 +1,246 @@
-@import '../../../styles/global.scss';
+@import "../../../styles/global.scss";
 
-#form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: gray;
-    border-radius: 20px;
-    text-align: center;
-    
-}
+.site-header {
+  display: flex;
+  align-items: center;
+  padding: $spacing-unit 1rem;
+  background-color: $primary-color;
 
-#submitBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70px;
-    height: 40px;
+  .logo {
     color: white;
-    background-color: blue;
-    border-radius: 10px;
-    text-align: center;
-}
-
-#cancelBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70px;
-    height: 40px;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  .slogan {
+    flex: 1;
     color: white;
-    background-color: blue;
-    border-radius: 10px;
     text-align: center;
+    font-size: 1.125rem;
+  }
+  .user-profile {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: white;
+  }
 }
 
+.navbar {
+  background-color: $secondary-color;
+  padding: 0.5rem 1rem;
 
-[id^="step-"] {
-  display: none;
+  .nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: $spacing-unit;
+  }
+
+  .nav-item a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+  }
 }
 
-[id^="step-"]:not(.hidden) {
-  display: block;
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: $spacing-unit 1rem;
+
+  button#back3,
+  button#submitBtn,
+  button#publishBtn {
+    padding: 0.6rem 1.2rem;
+    background-color: $button-color;
+    color: white;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    font-size: $font-size-base;
+    &:hover {
+      background-color: darken($button-color, 5%);
+    }
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+h1 {
+  text-align: center;
+}
+
+#kp-step {
+  background: white;
+  padding: $spacing-unit;
+  border-radius: $border-radius;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin: 0 1rem $spacing-unit;
+
+  h2 {
+    margin-bottom: $spacing-unit;
+    color: $primary-color;
+    font-size: 1.25rem;
+  }
+
+  #keypointsList {
+    list-style: decimal inside;
+    margin: $spacing-unit 0;
+    padding: 0;
+    li {
+      background: lighten($background-color, 5%);
+      padding: 0.5rem;
+      border: 1px solid $border-color;
+      border-radius: $border-radius;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      button.delete-kp {
+        background: transparent;
+        border: none;
+        font-size: 1.25rem;
+        color: $accent-color;
+        cursor: pointer;
+        &:hover {
+          color: darken($accent-color, 10%);
+        }
+      }
+    }
+  }
+
+  label {
+    display: block;
+    margin-top: $spacing-unit;
+    font-weight: bold;
+  }
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+    }
+  }
+  span[id$="Error"] {
+    color: $accent-color;
+    font-size: 0.875rem;
+  }
+  .actions {
+    margin-top: $spacing-unit;
+    display: flex;
+    gap: $spacing-unit;
+    button {
+      flex: 1;
+      padding: 0.6rem;
+      border: none;
+      border-radius: $border-radius;
+      background: $primary-color;
+      color: white;
+      cursor: pointer;
+      &:hover {
+        background: darken($primary-color, 5%);
+      }
+      &.hidden {
+        display: none;
+      }
+    }
+  }
+
+  #kpFeedback {
+    display: block;
+    margin-top: $spacing-unit;
+    color: $accent-color;
+    font-style: italic;
+  }
+}
+
+#step-3 {
+  background: white;
+  padding: $spacing-unit;
+  border-radius: $border-radius;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin: 0 1rem $spacing-unit;
+
+  h2 {
+    margin-bottom: $spacing-unit;
+    color: $primary-color;
+    font-size: 1.25rem;
+  }
+
+  label {
+    display: block;
+    margin-top: $spacing-unit;
+    font-weight: bold;
+  }
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+    }
+  }
+  span[id$="Error"] {
+    color: $accent-color;
+    font-size: 0.875rem;
+  }
+  .actions {
+    margin-top: $spacing-unit;
+    display: flex;
+    gap: $spacing-unit;
+    button {
+      flex: 1;
+      padding: 0.6rem;
+      border: none;
+      border-radius: $border-radius;
+      background: $primary-color;
+      color: white;
+      cursor: pointer;
+      &:hover {
+        background: darken($primary-color, 5%);
+      }
+      &.hidden {
+        display: none;
+      }
+    }
+  }
 }
 
 .hidden {
   display: none !important;
+}
+
+@media (max-width: 600px) {
+  .site-header,
+  .navbar,
+  .page-header,
+  #kp-step,
+  #step-3 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  h1,
+  h2,
+  label,
+  input,
+  textarea,
+  button {
+    font-size: 0.875rem;
+  }
 }

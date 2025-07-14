@@ -69,7 +69,7 @@ function updateKpUI() {
   ul.innerHTML = all.map((kp, i) => `
     <li>
       ${i+1}. ${kp.name}
-      <button class="delete-kp" data-index="${i}" type="button">×</button>
+      <button class="delete-kp" data-index="${i}" type="button">Obriši</button>
     </li>
   `).join("");
 
@@ -180,7 +180,7 @@ async function saveTour() {
 
 async function publishTour() {
     if (!tourId) await saveTour();
-    const t = readTourData("objavljena");
+    const t = readTourData("objavljeno");
     if (!t) return;
     await tourService.updateTour(tourId, t);
     alert("Tura je objavljena!");

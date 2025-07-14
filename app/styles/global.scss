@@ -1,67 +1,157 @@
-$primary-color: #007bff;
+$spacing-unit: 1rem;
+$padding-base: 0.75rem;
+$border-radius: 0.25rem;
+
+$font-family-base: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+$font-size-base: 1rem;
+$line-height-base: 1.5;
+
+$primary-color: #104474;
+$secondary-color: #70bce4;
+$border-color: #dce3e8;
+$background-color: #f4f7f9;
 $accent-color: #ff5733;
-$warn-color: #d9534f; 
-$button-color: #28a745; 
+$warn-color: #d9534f;
+$button-color: #104474;
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 200px;
-    margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 200px;
+  margin: 20px auto;
 }
 
 label {
-    font-size: 14px;
-    color: $primary-color;
+  font-size: 14px;
+  color: $primary-color;
 }
 
 input {
-    padding: 8px;
-    border-radius: 4px;
-    font-size: 14px;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
 button {
-    padding: 10px 15px;
-    background-color: $button-color;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
+  padding: 10px 15px;
+  background-color: $button-color;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
 }
 
 .navbar {
-    background-color: $primary-color;
-    padding: 10px;
+  background-color: $primary-color;
+  padding: 10px;
 
-    .nav-list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
+  .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  .nav-item {
+    margin-right: 15px;
+
+    a {
+      color: white;
     }
+  }
 
-    .nav-item {
-        margin-right: 15px;
+  #login {
+    margin-left: auto;
+  }
 
-        a {
-            color: white;
-        }
-    }
+  #logout {
+    margin-left: auto;
+  }
+}
 
-    #login {
-        margin-left: auto;
-    }
+#toast-container {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 1000;
+}
 
-    #logout {
-        margin-left: auto;
-    }
-    
+.toast {
+  min-width: 200px;
+  padding: 0.75rem 1rem;
+  border-radius: 0.25rem;
+  color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &.success {
+    background: #28a745;
+  }
+  &.error {
+    background: #e74c3c;
+  }
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  padding: $spacing-unit 1rem;
+  background-color: $primary-color;
+
+  .logo {
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  .slogan {
+    flex: 1;
+    color: white;
+    text-align: center;
+    font-size: 1.125rem;
+  }
+
+  .user-profile {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: white;
+  }
+}
+
+.navbar {
+  background-color: $secondary-color;
+  padding: 0.5rem 1rem;
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: $spacing-unit;
+  }
+
+  .nav-item a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+  }
 }

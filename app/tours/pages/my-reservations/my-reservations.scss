@@ -1,0 +1,71 @@
+@import "../../../styles/global.scss";
+
+#my-reservations {
+  max-width: 800px;
+  margin: $spacing-unit auto;
+  padding: 0 $spacing-unit;
+
+  h1 {
+    text-align: center;
+    margin-bottom: $spacing-unit;
+    color: $secondary-color;
+    font-size: 1.5rem;
+  }
+
+  table#resTable {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: $border-radius;
+    overflow: hidden;
+
+    thead {
+      background-color: $primary-color;
+      color: white;
+    }
+
+    th,
+    td {
+      padding: $padding-base;
+      text-align: left;
+      border-bottom: 1px solid $border-color;
+    }
+
+    tbody tr {
+      &:nth-child(odd) {
+        background: lighten($background-color, 4%);
+      }
+      &:hover {
+        background: lighten($primary-color, 40%);
+      }
+    }
+
+    button {
+      padding: 0.4rem 0.8rem;
+      background: $accent-color;
+      color: white;
+      border: none;
+      border-radius: $border-radius;
+      cursor: pointer;
+      transition: background 0.2s;
+      &:hover {
+        background: darken($accent-color, 5%);
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  #my-reservations {
+    padding: 0 $spacing-unit / 2;
+  }
+  table#resTable,
+  button {
+    font-size: 0.875rem;
+  }
+  th,
+  td {
+    padding: 0.5rem;
+  }
+}
