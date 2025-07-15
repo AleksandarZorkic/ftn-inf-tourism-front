@@ -15,6 +15,44 @@ $font-family-base: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 $font-size-base: 1rem;
 $line-height-base: 1.5;
 
+.layout {
+  display: grid;
+  grid-template-columns: 10% 1fr 10%;
+  grid-auto-rows: min-content;
+  gap: $spacing-unit;
+  width: 100%;
+  overflow: hidden;
+
+  h1 {
+    grid-column: 2;
+    margin: $spacing-unit 0;
+    text-align: center;
+    color: $secondary-color;
+    font-size: 1.75rem;
+  }
+}
+
+.sidebar {
+  list-style: none;
+  background: $sidebar-color;
+  padding: $spacing-unit;
+  border-radius: $border-radius;
+  overflow-y: auto;
+}
+
+.layout > .sidebar.left {
+  grid-column: 1;
+}
+.layout > .sidebar.right {
+  grid-column: 3;
+}
+
+.layout > .controls,
+.layout > #toursTable,
+.layout > .pagination {
+  grid-column: 2;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -26,13 +64,6 @@ body {
   font-family: $font-family-base;
   font-size: $font-size-base;
   line-height: $line-height-base;
-}
-
-h1 {
-  color: $secondary-color;
-  font-size: 1.75rem;
-  margin-bottom: $spacing-unit * 1.5;
-  text-align: center;
 }
 
 .controls {
@@ -115,7 +146,7 @@ h1 {
   }
 
   a {
-    color: $accent-color;
+    color: $primary-color;
     text-decoration: none;
     font-weight: bold;
 
@@ -161,16 +192,13 @@ h1 {
 }
 
 @media (max-width: 600px) {
-  body {
-    padding: $spacing-unit / 2;
+  .layout {
+    grid-template-columns: 1fr;
   }
-  #toursTable,
-  .controls,
-  .pagination {
-    font-size: 0.875rem;
-  }
-  th,
-  td {
-    padding: 0.5rem;
+  .layout > .sidebar,
+  .layout > .controls,
+  .layout > #toursTable,
+  .layout > .pagination {
+    grid-column: 1;
   }
 }

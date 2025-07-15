@@ -9,31 +9,46 @@
     />
   </head>
   <body>
+    <header class="site-header">
+      <div class="logo">Logo</div>
+      <div class="slogan">Neki slogan</div>
+      <div class="user-profile"></div>
+    </header>
+
     <nav class="navbar">
       <ul class="nav-list">
         <li class="nav-item"><a href="../../../index.html">Home</a></li>
-        <li class="nav-item" id="login">
-          <a href="users/pages/login/login.html">Login</a>
-        </li>
         <li class="nav-item" id="logout">
-          <a href="../../../index.html">Logout</a>
+          <a href="../../../users/pages/login/login.html">Logout</a>
         </li>
       </ul>
     </nav>
 
-    <h1>Moje rezervacije</h1>
-    <table id="resTable">
-      <thead>
-        <tr>
-          <th>Tura</th>
-          <th>Datum ture</th>
-          <th>Broj osoba</th>
-          <th>Rezervisano</th>
-          <th>Akcija</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+    <div class="layout">
+      <aside class="sidebar left">
+        <h2>Filteri</h2>
+        <li class="nav-item">
+          <a href="../my-reservations/my-reservations.html">Moje rezervacije</a>
+        </li>
+      </aside>
+
+      <div class="center">
+        <h1>Moje rezervacije</h1>
+        <table id="resTable">
+          <thead>
+            <tr>
+              <th>Tura</th>
+              <th>Datum ture</th>
+              <th>Broj osoba</th>
+              <th>Rezervisano</th>
+              <th>Akcija</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <aside class="sidebar right">Mesto za reklame</aside>
+    </div>
     <script
       type="module"
       src="../../../../dist/tours/pages/my-reservations/my-reservations.js"

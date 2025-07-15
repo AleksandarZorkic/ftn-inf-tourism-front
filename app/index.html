@@ -23,40 +23,49 @@
       </ul>
     </nav>
 
-    <h1>Pregled svih tura</h1>
-    <li class="nav-item">
-      <a href="../app/tours/pages/my-reservations/my-reservations.html"
-        >Moje rezervacije</a
-      >
-    </li>
+    <div class="layout">
+      <aside class="sidebar left">
+        <h2>Filteri</h2>
+        <li class="nav-item">
+          <a href="../app/tours/pages/my-reservations/my-reservations.html"
+            >Moje rezervacije</a
+          >
+        </li>
+        <div class="controls">
+          <label for="pageSize">Prikaži po:</label>
+          <select id="pageSize">
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="20">20</option>
+          </select>
+        </div>
+      </aside>
 
-    <div class="controls">
-      <label for="pageSize">Prikaži po:</label>
-      <select id="pageSize">
-        <option value="5">5</option>
-        <option value="10" selected>10</option>
-        <option value="20">20</option>
-      </select>
-    </div>
+      <div class="center">
+        <h1>Pregled svih tura</h1>
+        <table id="toursTable">
+          <thead>
+            <tr>
+              <th class="sortable" data-column="Name">Naziv ▲▼</th>
+              <th class="sortable" data-column="DateTime">Datum ▲▼</th>
+              <th class="sortable" data-column="MaxGuests">
+                Maks. učesnika ▲▼
+              </th>
+              <th>Opis</th>
+              <th>Slobodna mesta</th>
+              <th>Detalji</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
 
-    <table id="toursTable">
-      <thead>
-        <tr>
-          <th class="sortable" data-column="Name">Naziv ▲▼</th>
-          <th class="sortable" data-column="DateTime">Datum i vreme ▲▼</th>
-          <th class="sortable" data-column="MaxGuests">Max učesnika ▲▼</th>
-          <th>Opis</th>
-          <th>Slobodna mesta</th>
-          <th>Detalji</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-
-    <div class="pagination">
-      <button id="prevPage">Prethodna</button>
-      <span id="pageInfo"></span>
-      <button id="nextPage">Naredna</button>
+      <aside class="sidebar right">Mesto za reklame</aside>
+      <div class="pagination">
+        <button id="prevPage">Prethodna</button>
+        <span id="pageInfo"></span>
+        <button id="nextPage">Naredna</button>
+      </div>
     </div>
   </body>
 </html>

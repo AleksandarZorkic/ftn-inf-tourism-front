@@ -24,7 +24,13 @@ async function loadDetails(): Promise<void> {
 
     nameEl.textContent = tour.name;
     descEl.textContent = tour.description;
-    dateEl.textContent = new Date(tour.dateTime).toLocaleString();
+    dateEl.textContent = new Date(tour.dateTime).toLocaleString("sr-Latn-RS", {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
     maxEl.textContent = String(tour.maxGuests);
     availEl.textContent = String(tour.availableSeats);
 

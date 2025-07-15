@@ -9,35 +9,50 @@
     />
   </head>
   <body>
+    <header class="site-header">
+      <div class="logo">Logo</div>
+      <div class="slogan">Neki slogan</div>
+      <div class="user-profile"></div>
+    </header>
+
     <nav class="navbar">
       <ul class="nav-list">
         <li class="nav-item"><a href="../../../index.html">Home</a></li>
         <li class="nav-item" id="logout">
-          <a href="../../../../dist/users/pages/login/login.html">Logout</a>
+          <a href="../../../users/pages/login/login.html">Logout</a>
         </li>
       </ul>
     </nav>
 
-    <main id="details-page">
-      <h1 id="tourName"></h1>
-      <p id="tourDesc"></p>
-      <p><strong>Datum i vreme:</strong> <span id="tourDate"></span></p>
-      <p><strong>Maks. učesnika:</strong> <span id="tourMax"></span></p>
+    <div class="layout">
+      <aside class="sidebar left">
+        <h2>Filteri</h2>
+        <li class="nav-item">
+          <a href="../my-reservations/my-reservations.html">Moje rezervacije</a>
+        </li>
+      </aside>
 
-      <section id="keypoints">
-        <h2>Ključne tačke</h2>
-        <ul id="keypointList"></ul>
-      </section>
+      <main id="details-page">
+        <h1 id="tourName"></h1>
+        <p id="tourDesc"></p>
+        <p><strong>Datum i vreme:</strong> <span id="tourDate"></span></p>
+        <p><strong>Maks. učesnika:</strong> <span id="tourMax"></span></p>
 
-      <section id="reserve-section">
-        <p>Slobodna mesta: <span id="tourAvailable"></span></p>
-        <label for="numPeople">Broj osoba:</label>
-        <input id="numPeople" type="number" min="1" value="1" />
-        <button id="reserveBtn">Rezerviši</button>
-        <span id="reserveError" class="error"></span>
-      </section>
-    </main>
+        <section id="keypoints">
+          <h2>Ključne tačke</h2>
+          <ul id="keypointList"></ul>
+        </section>
 
+        <section id="reserve-section">
+          <p>Slobodna mesta: <span id="tourAvailable"></span></p>
+          <label for="numPeople">Broj osoba:</label>
+          <input id="numPeople" type="number" min="1" value="1" />
+          <button id="reserveBtn">Rezerviši</button>
+          <span id="reserveError" class="error"></span>
+        </section>
+      </main>
+      <aside class="sidebar right">Mesto za reklame</aside>
+    </div>
     <script
       type="module"
       src="../../../../dist/tours/pages/details/details.js"
