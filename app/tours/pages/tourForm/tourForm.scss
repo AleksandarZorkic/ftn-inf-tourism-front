@@ -44,74 +44,19 @@
   }
 }
 
-.page-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: $spacing-unit 1rem;
-
-  button#back3,
-  button#submitBtn,
-  button#publishBtn {
-    padding: 0.6rem 1.2rem;
-    background-color: $button-color;
-    color: white;
-    border: none;
-    border-radius: $border-radius;
-    cursor: pointer;
-    font-size: $font-size-base;
-    &:hover {
-      background-color: darken($button-color, 5%);
-    }
-    &:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-  }
-}
-
-h1 {
-  text-align: center;
-}
-
-#kp-step {
+#step-1 {
+  max-width: 600px;
+  margin: $spacing-unit auto;
   background: white;
   padding: $spacing-unit;
   border-radius: $border-radius;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  margin: 0 1rem $spacing-unit;
 
   h2 {
+    text-align: center;
     margin-bottom: $spacing-unit;
     color: $primary-color;
-    font-size: 1.25rem;
-  }
-
-  #keypointsList {
-    list-style: decimal inside;
-    margin: $spacing-unit 0;
-    padding: 0;
-    li {
-      background: lighten($background-color, 5%);
-      padding: 0.5rem;
-      border: 1px solid $border-color;
-      border-radius: $border-radius;
-      margin-bottom: 0.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      button.delete-kp {
-        background: transparent;
-        border: none;
-        font-size: 1.25rem;
-        color: $accent-color;
-        cursor: pointer;
-        &:hover {
-          color: darken($accent-color, 10%);
-        }
-      }
-    }
+    font-size: 1.5rem;
   }
 
   label {
@@ -132,93 +77,162 @@ h1 {
       box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
     }
   }
-  span[id$="Error"] {
-    color: $accent-color;
-    font-size: 0.875rem;
-  }
+
   .actions {
-    margin-top: $spacing-unit;
     display: flex;
+    justify-content: flex-end;
     gap: $spacing-unit;
+    margin-top: $spacing-unit;
+
     button {
-      flex: 1;
-      padding: 0.6rem;
+      padding: 0.6rem 1.2rem;
+      background-color: $button-color;
+      color: white;
       border: none;
       border-radius: $border-radius;
-      background: $primary-color;
-      color: white;
       cursor: pointer;
+      font-size: $font-size-base;
       &:hover {
-        background: darken($primary-color, 5%);
+        background-color: darken($button-color, 5%);
       }
-      &.hidden {
-        display: none;
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+#step-2 {
+  > h2 {
+    text-align: center;
+    margin: $spacing-unit 0;
+    color: $primary-color;
+    font-size: 1.5rem;
+    width: 100%;
+  }
+
+  .mid-screen {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: $spacing-unit 0;
+    box-sizing: border-box;
+  }
+
+  .kp-form {
+    flex: 1 1 50%;
+    margin-right: $spacing-unit;
+    background: white;
+    padding: $spacing-unit;
+    border-radius: $border-radius;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+    label {
+      display: block;
+      margin-top: $spacing-unit;
+      font-weight: bold;
+    }
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.25rem;
+      border: 1px solid $border-color;
+      border-radius: $border-radius;
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+      }
+    }
+    .actions {
+      margin-top: $spacing-unit;
+      display: flex;
+      justify-content: flex-end;
+      gap: $spacing-unit;
+    }
+  }
+
+  .kp-table-container {
+    flex: 1 1 50%;
+    margin-left: $spacing-unit;
+    background: white;
+    padding: $spacing-unit;
+    border-radius: $border-radius;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      thead {
+        background: $primary-color;
+        color: white;
+      }
+
+      th,
+      td {
+        padding: $padding-base;
+        text-align: left;
+        border-bottom: 1px solid $border-color;
+      }
+
+      tbody tr:nth-child(odd) {
+        background: lighten($background-color, 4%);
+      }
+      tbody tr:hover {
+        background: lighten($primary-color, 40%);
+      }
+
+      button.edit-kp,
+      button.delete-kp {
+        padding: 0.35rem 0.75rem;
+        font-size: 0.8rem;
+        line-height: 1.1;
+        border-radius: $border-radius * 0.7;
+        margin: 0.2rem 0;
+        display: inline-block;
       }
     }
   }
 
-  #kpFeedback {
-    display: block;
-    margin-top: $spacing-unit;
-    color: $accent-color;
-    font-style: italic;
+  > .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $spacing-unit;
+    margin: $spacing-unit auto 0;
+    max-width: 1280px;
   }
 }
 
 #step-3 {
+  max-width: 800px;
+  margin: $spacing-unit auto;
   background: white;
   padding: $spacing-unit;
   border-radius: $border-radius;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  margin: 0 1rem $spacing-unit;
 
   h2 {
     margin-bottom: $spacing-unit;
     color: $primary-color;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+    text-align: center;
   }
-
-  label {
-    display: block;
+  p,
+  ul {
     margin-top: $spacing-unit;
-    font-weight: bold;
-  }
-  input,
-  textarea {
-    width: 100%;
-    padding: 0.5rem;
-    margin-top: 0.25rem;
-    border: 1px solid $border-color;
-    border-radius: $border-radius;
-    &:focus {
-      outline: none;
-      border-color: $primary-color;
-      box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
-    }
-  }
-  span[id$="Error"] {
-    color: $accent-color;
-    font-size: 0.875rem;
   }
   .actions {
-    margin-top: $spacing-unit;
     display: flex;
+    justify-content: flex-end;
     gap: $spacing-unit;
-    button {
-      flex: 1;
-      padding: 0.6rem;
-      border: none;
-      border-radius: $border-radius;
-      background: $primary-color;
-      color: white;
-      cursor: pointer;
-      &:hover {
-        background: darken($primary-color, 5%);
-      }
-      &.hidden {
-        display: none;
-      }
-    }
+    margin-top: $spacing-unit;
   }
 }
 
@@ -226,16 +240,75 @@ h1 {
   display: none !important;
 }
 
-@media (max-width: 600px) {
-  .site-header,
-  .navbar,
-  .page-header,
-  #kp-step,
-  #step-3 {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+.step-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: $spacing-unit 0;
+  gap: $spacing-unit;
+
+  .step {
+    flex: none;
+    position: relative;
+
+    .circle {
+      position: relative;
+      z-index: 1;
+      width: 2.5rem;
+      height: 2.5rem;
+      line-height: 2.5rem;
+      background: $border-color;
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    &:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: calc(50% + 0.25rem);
+      width: calc(100% - 3rem);
+      height: 3px;
+      background: $border-color;
+      transform: translateY(-50%);
+      z-index: 0;
+    }
+
+    &.active .circle {
+      background: $primary-color;
+    }
   }
-  h1,
+}
+
+@media (max-width: 600px) {
+  .step-indicator .circle {
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 800px) {
+  #step-1,
+  #step-2,
+  #step-3 {
+    margin: $spacing-unit;
+    padding: $spacing-unit;
+  }
+  #step-2 .mid-screen {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .kp-form,
+  .kp-table-container,
+  #step-2 > .actions {
+    width: 100%;
+    margin: $spacing-unit 0 0;
+  }
   h2,
   label,
   input,

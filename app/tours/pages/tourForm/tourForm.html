@@ -8,11 +8,6 @@
       rel="stylesheet"
       href="../../../../dist/tours/pages/tourForm/tourForm.css"
     />
-    <script
-      type="module"
-      src="../../../../dist/tours/pages/tourForm/tourForm.js"
-      defer
-    ></script>
   </head>
   <body>
     <header class="site-header">
@@ -24,101 +19,116 @@
     <nav class="navbar">
       <ul class="nav-list">
         <li class="nav-item"><a href="../../../index.html">Home</a></li>
+        <li class="nav-item hidden" id="myTours">
+          <a href="../tour/tour.html">Moje ture</a>
+        </li>
         <li class="nav-item" id="logout">
           <a href="../../../users/pages/login/login.html">Logout</a>
         </li>
       </ul>
     </nav>
 
-    <h1>Kreiraj novu turu</h1>
-    <div id="kp-step">
-      <h2>
-        Unesite ključnu tačku
-        <span id="kpIndex"></span> od <span id="kpMax"></span>
-      </h2>
-
-      <ul id="keypointsList"></ul>
-
-      <label for="kpName">Naziv ključne tačke:</label>
-      <input id="kpName" placeholder="Naziv tačke" required />
-      <span id="kpNameError"></span><br />
-
-      <label for="kpDesc">Opis:</label>
-      <textarea id="kpDesc" placeholder="Opis tačke" required></textarea>
-      <span id="kpDescError"></span><br />
-
-      <label for="kpImageUrl">URL slike:</label>
-      <input id="kpImageUrl" placeholder="https://..." required />
-      <span id="kpImageUrlError"></span><br />
-
-      <label for="kpLat">Geografska širina:</label>
-      <input
-        id="kpLat"
-        type="number"
-        step="any"
-        placeholder="44.8176"
-        required
-      />
-      <span id="kpLatError"></span><br />
-
-      <label for="kpLng">Geografska dužina:</label>
-      <input
-        id="kpLng"
-        type="number"
-        step="any"
-        placeholder="20.4633"
-        required
-      />
-      <span id="kpLngError"></span><br />
-
-      <div class="actions">
-        <button id="kpCancel" type="button">Odustani</button>
-        <button id="kpNext" type="button">Dalje</button>
-        <button id="kpFinish" type="button" class="hidden">Popuni turu</button>
+    <div class="step-indicator">
+      <div class="step active" data-step="1">
+        <div class="circle">1</div>
       </div>
-
-      <span id="kpFeedback"></span>
+      <div class="step" data-step="2">
+        <div class="circle">2</div>
+      </div>
+      <div class="step" data-step="3">
+        <div class="circle">3</div>
+      </div>
     </div>
 
-    <form id="form">
-      <div id="step-3" class="hidden">
-        <h2>Osnovni podaci o turi</h2>
+    <section id="step-1">
+      <h2>Osnovni podaci o turi</h2>
+      <label for="name">Naziv ture:</label>
+      <input id="name" type="text" minlength="3" />
+      <label for="description">Opis ture:</label>
+      <textarea id="description" minlength="250"></textarea>
+      <label for="date">Datum i vreme:</label>
+      <input id="date" type="datetime-local" />
+      <label for="maxParticipants">Maks. učesnika:</label>
+      <input id="maxParticipants" type="number" min="1" />
+      <div class="actions">
+        <button id="tr-back" type="button">Nazad</button>
+        <button id="to-step-2" type="button">Dodaj ključne tačke</button>
+        <button id="tr-save" type="button">Sačuvaj</button>
+      </div>
+    </section>
 
-        <input id="tourId" name="id" type="hidden" />
+    <section id="step-2" class="hidden">
+      <h2>
+        Unesite ključnu tačku <span id="kpIndex"></span> od
+        <span id="kpMax"></span>
+      </h2>
 
-        <label for="name">Naziv ture:</label>
-        <input id="name" name="name" type="text" required minlength="3" />
-        <span id="nameError"></span><br />
+      <div class="mid-screen">
+        <div class="kp-form">
+          <label for="kpName">Naziv:</label>
+          <input id="kpName" type="text" />
+          <label for="kpDesc">Opis:</label>
+          <textarea id="kpDesc"></textarea>
+          <label for="kpImageUrl">Slika (URL):</label>
+          <input id="kpImageUrl" type="url" />
+          <label for="kpLat">Latitude:</label>
+          <input id="kpLat" type="number" step="any" />
+          <label for="kpLng">Longitude:</label>
+          <input id="kpLng" type="number" step="any" />
+        </div>
 
-        <label for="description">Opis ture:</label>
-        <textarea
-          id="description"
-          name="description"
-          required
-          minlength="250"
-        ></textarea>
-        <span id="descriptionError"></span><br />
-
-        <label for="date">Datum i vreme:</label>
-        <input id="date" name="date" type="datetime-local" required />
-        <span id="dateError"></span><br />
-
-        <label for="maxParticipants">Maks. učesnika:</label>
-        <input
-          id="maxParticipants"
-          name="maxParticipants"
-          type="number"
-          required
-          min="1"
-        />
-        <span id="maxParticipantsError"></span><br />
-
-        <div class="actions">
-          <button id="back3" type="button">Nazad</button>
-          <button id="submitBtn" type="button">Sačuvaj turu</button>
-          <button id="publishBtn" type="button" disabled>Objavi turu</button>
+        <div class="kp-table-container">
+          <table id="kpTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Naziv</th>
+                <th>Opis</th>
+                <th>Slika</th>
+                <th>Lat</th>
+                <th>Lng</th>
+                <th>Akcije</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
         </div>
       </div>
-    </form>
+
+      <div class="actions">
+        <button id="kp-back" type="button">Nazad</button>
+        <button id="kp-next" type="button">Dodaj tačku</button>
+        <button id="kp-save" type="button" class="hidden">
+          Sačuvaj izmenu
+        </button>
+        <button id="to-step-3" type="button" class="hidden">
+          Pregled ture
+        </button>
+      </div>
+    </section>
+
+    <section id="step-3" class="hidden">
+      <h2>Pregled ture</h2>
+      <p><strong>Naziv:</strong> <span id="sumName"></span></p>
+      <p><strong>Opis:</strong> <span id="sumDesc"></span></p>
+      <p><strong>Datum:</strong> <span id="sumDate"></span></p>
+      <p><strong>Maks. učesnika:</strong> <span id="sumMax"></span></p>
+      <h3>Ključne tačke:</h3>
+      <ul id="sumKeypoints"></ul>
+      <div class="actions">
+        <button id="summary-back" type="button">Nazad</button>
+        <button id="publishBtn" type="button" disabled>Objavi turu</button>
+      </div>
+    </section>
+
+    <script
+      type="module"
+      src="../../../../dist/tours/pages/tourForm/tourForm.js"
+    ></script>
+    <script
+      type="module"
+      src="../../../../dist/tours/components/navbar.js"
+      defer
+    ></script>
   </body>
 </html>

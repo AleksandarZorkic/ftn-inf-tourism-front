@@ -18,6 +18,9 @@
     <nav class="navbar">
       <ul class="nav-list">
         <li class="nav-item"><a href="../../../index.html">Home</a></li>
+        <li class="nav-item hidden" id="myTours">
+          <a href="../tour/tour.html">Moje ture</a>
+        </li>
         <li class="nav-item" id="logout">
           <a href="../../../users/pages/login/login.html">Logout</a>
         </li>
@@ -56,6 +59,11 @@
     <script
       type="module"
       src="../../../../dist/tours/pages/details/details.js"
+      defer
+    ></script>
+    <script
+      type="module"
+      src="../../../../dist/tours/components/navbar.js"
       defer
     ></script>
     <div id="toast-container"></div>

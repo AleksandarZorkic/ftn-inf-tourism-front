@@ -61,7 +61,7 @@ async function loadDetails(): Promise<void> {
     errorEl.textContent = "";
   } catch (e) {
     console.error("Greška pri učitavanju detalja ture:", e);
-    showToast("Ne mogu da učitam detalje ture.", "error");
+    showMsg("Ne mogu da učitam detalje ture.", "error");
   }
 }
 
@@ -71,13 +71,13 @@ reserveBtn.addEventListener("click", async () => {
   if (num < 1 || num > Number(numInput.max)) {
     const msg = `Trenutno je dostupno samo ${numInput.max} mesta.`;
     errorEl.textContent = msg;
-    showToast(msg, "error");
+    showMsg(msg, "error");
     return;
   }
 
   try {
     await resSvc.create({ tourId, userId, numPeople: num });
-    showToast("Rezervacija uspešna!", "success", toastDuration);
+    showMsg("Rezervacija uspešna!", "success", toastDuration);
     errorEl.textContent = "";
     await loadDetails();
 
@@ -90,11 +90,11 @@ reserveBtn.addEventListener("click", async () => {
         ? err.message
         : "Došlo je do greške pri rezervaciji.";
     errorEl.textContent = msg;
-    showToast(msg, "error");
+    showMsg(msg, "error");
   }
 });
 
-function showToast(
+function showMsg(
   message: string,
   type: "success" | "error" = "success",
   duration = 2000
